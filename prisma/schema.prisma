@@ -15,6 +15,7 @@ model Profile {
   imageUrl String @db.Text
   email String @db.Text
 
+
   servers Server[]
   members Member[]
   channels Channel[]
