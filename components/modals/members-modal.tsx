@@ -13,8 +13,20 @@ import { ServerWithMembersWithProfiles } from "@/types";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { UserAvatar } from "@/components/user-avatar";
-import { ShieldAlert, ShieldCheck } from "lucide-react";
+import { MoreVertical, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
 import { useState } from "react";
+
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuTrigger,
+    DropdownMenuSubTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const roleIconMap = {
     "GUEST": null,
@@ -60,7 +72,26 @@ export const MembersModal = () => {
                             </div>
                             {server.profileId !== member.profileId && loadingId !== member.id && (
                                <div className="ml-auto">
-                                    Actions!
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger>
+                                            <MoreVertical className="h-4 w-4 text-zinc-500"/>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent side="left">
+                                            <DropdownMenuSub>
+                                                <DropdownMenuSubTrigger className="flex items-center">
+                                                    <ShieldQuestion className="w-4 h-4 mr-2"/>
+                                                    <span>Role</span>
+                                                </DropdownMenuSubTrigger>
+                                                <DropdownMenuPortal>
+                                                    <DropdownMenuSubContent>
+                                                        <DropdownMenuItem>
+                                                            
+                                                        </DropdownMenuItem>
+                                                    </DropdownMenuSubContent>
+                                                </DropdownMenuPortal>
+                                            </DropdownMenuSub>
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
                                </div>
                             )}
                         </div>
